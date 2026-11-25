@@ -1,0 +1,1354 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CLI tools for deploying and managing Appian on Kubernetes">
+      
+      
+      
+      
+        <link rel="prev" href="usage.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Configuration - Appian on Kubernetes Utilities (v3.0.1)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuration-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Appian on Kubernetes Utilities (v3.0.1)" class="md-header__button md-logo" aria-label="Appian on Kubernetes Utilities (v3.0.1)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Appian on Kubernetes Utilities (v3.0.1)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Appian on Kubernetes Utilities (v3.0.1)" class="md-nav__button md-logo" aria-label="Appian on Kubernetes Utilities (v3.0.1)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Appian on Kubernetes Utilities (v3.0.1)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="configuration.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        repository
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        operator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="operator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valid-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valid Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditional-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        site
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="site">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valid-values_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valid Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditional-requirements_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sitedatasources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        site.dataSources
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="site.dataSources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valid-values_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valid Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#business-database-provisioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Business Database Provisioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-sizing-by-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage Sizing by Class
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-requirements-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional Requirements Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        repository
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        operator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="operator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valid-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valid Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditional-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        site
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="site">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valid-values_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valid Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditional-requirements_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sitedatasources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        site.dataSources
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="site.dataSources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valid-values_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valid Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#business-database-provisioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Business Database Provisioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-sizing-by-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage Sizing by Class
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-requirements-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional Requirements Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="configuration-reference">Configuration Reference<a class="headerlink" href="#configuration-reference" title="Permanent link">&para;</a></h1>
+<p>This document describes the complete schema for the <code>config-values.yaml</code> file used by <code>aok generate</code>. The config-values file is the single input that drives all generated deployment artifacts.</p>
+<h2 id="file-structure">File Structure<a class="headerlink" href="#file-structure" title="Permanent link">&para;</a></h2>
+<p>The config-values file is a YAML document with three required top-level sections:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">repository</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="c1"># Container registry settings</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">operator</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="c1"># Appian Operator deployment settings</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">site</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="c1"># Appian site deployment settings</span>
+</code></pre></div>
+<hr />
+<h2 id="repository">repository<a class="headerlink" href="#repository" title="Permanent link">&para;</a></h2>
+<p>Registry and authentication settings for pulling Appian container images and Helm charts.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>appian</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>—</td>
+<td>Container image registry path (e.g. <code>my-registry.com/appian/images</code>)</td>
+</tr>
+<tr>
+<td><code>helm</code></td>
+<td>string</td>
+<td>No</td>
+<td>—</td>
+<td>OCI Helm chart registry URL (e.g. <code>my-registry.com/appian/helm</code>)</td>
+</tr>
+<tr>
+<td><code>authSecretName</code></td>
+<td>string</td>
+<td>No</td>
+<td>—</td>
+<td>Name of an existing Kubernetes image pull secret</td>
+</tr>
+<tr>
+<td><code>authUsername</code></td>
+<td>string</td>
+<td>No</td>
+<td>—</td>
+<td>Registry authentication username (requires <code>authPassword</code>)</td>
+</tr>
+<tr>
+<td><code>authPassword</code></td>
+<td>string</td>
+<td>No</td>
+<td>—</td>
+<td>Registry authentication password (requires <code>authUsername</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conditional-requirements">Conditional Requirements<a class="headerlink" href="#conditional-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li>If <code>authUsername</code> is provided, <code>authPassword</code> must also be provided (and vice versa). These are used to generate a registry credential secret as part of the deployment guide.</li>
+</ul>
+<hr />
+<h2 id="operator">operator<a class="headerlink" href="#operator" title="Permanent link">&para;</a></h2>
+<p>Settings for deploying the Appian Operator.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>topology</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>—</td>
+<td>Operator deployment topology. Valid values: <code>cluster-wide</code>, <code>main-and-site</code></td>
+</tr>
+<tr>
+<td><code>webhookCertModel</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>—</td>
+<td>Webhook TLS certificate provisioning model. Valid values: <code>cert-manager</code>, <code>ca-bundle</code></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>—</td>
+<td>Operator version tag (e.g. <code>v0.194.0</code>)</td>
+</tr>
+<tr>
+<td><code>namespace</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>appian-operator</code></td>
+<td>Kubernetes namespace for the operator</td>
+</tr>
+<tr>
+<td><code>caBundleBase64Value</code></td>
+<td>string</td>
+<td>Conditional</td>
+<td>—</td>
+<td>Base64-encoded CA certificate bundle for webhook TLS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="valid-values">Valid Values<a class="headerlink" href="#valid-values" title="Permanent link">&para;</a></h3>
+<p><strong>topology:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cluster-wide</code></td>
+<td>Single operator instance managing all namespaces</td>
+</tr>
+<tr>
+<td><code>main-and-site</code></td>
+<td>Separate main and site operators; avoids cross-namespace permissions</td>
+</tr>
+</tbody>
+</table>
+<p><strong>webhookCertModel:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cert-manager</code></td>
+<td>Automated TLS via cert-manager (must be pre-installed in the cluster)</td>
+</tr>
+<tr>
+<td><code>ca-bundle</code></td>
+<td>Manually provided CA bundle embedded in operator Helm values</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conditional-requirements_1">Conditional Requirements<a class="headerlink" href="#conditional-requirements_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>When <code>webhookCertModel</code> is <code>ca-bundle</code>, the field <code>caBundleBase64Value</code> is required. This value is the base64-encoded CA certificate that the operator uses to validate webhook TLS connections.</li>
+</ul>
+<hr />
+<h2 id="site">site<a class="headerlink" href="#site" title="Permanent link">&para;</a></h2>
+<p>Settings for the Appian site deployment.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>namespace</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>—</td>
+<td>Kubernetes namespace for the Appian site</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>—</td>
+<td>Appian site name (used in resource naming)</td>
+</tr>
+<tr>
+<td><code>appianPlatformCsHelmChartVersion</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>—</td>
+<td>Version of the <code>appian-platform-cs</code> Helm chart</td>
+</tr>
+<tr>
+<td><code>class</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>—</td>
+<td>Site sizing class. Valid values: <code>x-small</code>, <code>small</code>, <code>medium</code>, <code>large</code>, <code>x-large</code></td>
+</tr>
+<tr>
+<td><code>highAvailability</code></td>
+<td>boolean</td>
+<td>No</td>
+<td><code>false</code></td>
+<td>Enable high-availability mode with multiple engine replicas</td>
+</tr>
+<tr>
+<td><code>sharedStorage</code></td>
+<td>boolean</td>
+<td>No</td>
+<td><code>true</code> when HA</td>
+<td>Enable shared data PVC for the site</td>
+</tr>
+<tr>
+<td><code>rwxStorageClassName</code></td>
+<td>string</td>
+<td>Conditional</td>
+<td>—</td>
+<td>Kubernetes StorageClass name supporting ReadWriteMany access</td>
+</tr>
+<tr>
+<td><code>smtpAuthPassword</code></td>
+<td>string</td>
+<td>No</td>
+<td>—</td>
+<td>SMTP authentication password (written to <code>passwords.properties</code>)</td>
+</tr>
+<tr>
+<td><code>dataSources</code></td>
+<td>object</td>
+<td>No</td>
+<td>See below</td>
+<td>Database provisioning settings</td>
+</tr>
+</tbody>
+</table>
+<h3 id="valid-values_1">Valid Values<a class="headerlink" href="#valid-values_1" title="Permanent link">&para;</a></h3>
+<p><strong>class:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x-small</code></td>
+<td>Minimal resource allocation for development/testing</td>
+</tr>
+<tr>
+<td><code>small</code></td>
+<td>Low resource allocation for small workloads</td>
+</tr>
+<tr>
+<td><code>medium</code></td>
+<td>Moderate resource allocation for typical production</td>
+</tr>
+<tr>
+<td><code>large</code></td>
+<td>High resource allocation for demanding workloads</td>
+</tr>
+<tr>
+<td><code>x-large</code></td>
+<td>Maximum resource allocation for large-scale production</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conditional-requirements_2">Conditional Requirements<a class="headerlink" href="#conditional-requirements_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>When <code>highAvailability</code> is <code>true</code> or <code>sharedStorage</code> is <code>true</code>, the field <code>rwxStorageClassName</code> is required. This must reference a StorageClass that supports <code>ReadWriteMany</code> access mode.</li>
+<li>When <code>highAvailability</code> is <code>true</code> and <code>sharedStorage</code> is not explicitly set, <code>sharedStorage</code> defaults to <code>true</code> (HA sites always require shared storage).</li>
+</ul>
+<hr />
+<h2 id="sitedatasources">site.dataSources<a class="headerlink" href="#sitedatasources" title="Permanent link">&para;</a></h2>
+<p>Database provisioning settings. These control the generated SQL script for creating database schemas and users.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dbType</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>mysql</code></td>
+<td>Target database platform</td>
+</tr>
+<tr>
+<td><code>primarySchemaName</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>appian_primary</code></td>
+<td>Primary database schema name</td>
+</tr>
+<tr>
+<td><code>primaryUsername</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>PRIMARY_DB_USERNAME</code></td>
+<td>Primary database username</td>
+</tr>
+<tr>
+<td><code>primaryPassword</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>YOUR_PASSWORD_HERE</code></td>
+<td>Primary database user password</td>
+</tr>
+<tr>
+<td><code>businessUsername</code></td>
+<td>string</td>
+<td>No</td>
+<td>—</td>
+<td>Business database username (triggers business DB provisioning)</td>
+</tr>
+<tr>
+<td><code>businessPassword</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>YOUR_PASSWORD_HERE</code></td>
+<td>Business database user password</td>
+</tr>
+<tr>
+<td><code>businessSchemaName</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>appian</code></td>
+<td>Business database schema name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="valid-values_2">Valid Values<a class="headerlink" href="#valid-values_2" title="Permanent link">&para;</a></h3>
+<p><strong>dbType:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mysql</code></td>
+<td>MySQL 8.x</td>
+</tr>
+<tr>
+<td><code>mariadb</code></td>
+<td>MariaDB 10.x+</td>
+</tr>
+<tr>
+<td><code>oracle</code></td>
+<td>Oracle Database</td>
+</tr>
+<tr>
+<td><code>postgresql</code></td>
+<td>PostgreSQL 12+</td>
+</tr>
+<tr>
+<td><code>sqlserver</code></td>
+<td>Microsoft SQL Server</td>
+</tr>
+<tr>
+<td><code>db2</code></td>
+<td>IBM DB2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="business-database-provisioning">Business Database Provisioning<a class="headerlink" href="#business-database-provisioning" title="Permanent link">&para;</a></h3>
+<p>Business database statements are only included in the generated SQL script when <code>businessUsername</code> is provided. If <code>businessUsername</code> is set but <code>businessSchemaName</code> is omitted, the business schema defaults to <code>appian</code>.</p>
+<hr />
+<h2 id="storage-sizing-by-class">Storage Sizing by Class<a class="headerlink" href="#storage-sizing-by-class" title="Permanent link">&para;</a></h2>
+<p>The generator automatically determines PVC storage capacity based on the selected <code>site.class</code>. The following table shows the storage values used for each sizing class:</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Shared Logs (non-HA)</th>
+<th>Shared Logs (HA)</th>
+<th>Shared Data (HA)</th>
+<th>Shared Data (non-HA)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x-small</td>
+<td>100Gi</td>
+<td>200Gi</td>
+<td>100Gi</td>
+<td>50Gi</td>
+</tr>
+<tr>
+<td>small</td>
+<td>100Gi</td>
+<td>200Gi</td>
+<td>100Gi</td>
+<td>50Gi</td>
+</tr>
+<tr>
+<td>medium</td>
+<td>150Gi</td>
+<td>300Gi</td>
+<td>200Gi</td>
+<td>100Gi</td>
+</tr>
+<tr>
+<td>large</td>
+<td>200Gi</td>
+<td>400Gi</td>
+<td>300Gi</td>
+<td>150Gi</td>
+</tr>
+<tr>
+<td>x-large</td>
+<td>200Gi</td>
+<td>400Gi</td>
+<td>300Gi</td>
+<td>150Gi</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>The shared logs PVC (<code>appian-shared-logs</code>) is always generated. Its capacity is selected based on whether <code>highAvailability</code> is <code>true</code> (HA column) or <code>false</code> (non-HA column).</li>
+<li>The shared data PVC (<code>appian-shared-data</code>) is only generated when <code>sharedStorage</code> is <code>true</code>. Its capacity is selected based on the HA mode.</li>
+<li>Both PVCs use the <code>ReadWriteMany</code> access mode and reference the <code>rwxStorageClassName</code> value.</li>
+</ul>
+<hr />
+<h2 id="conditional-requirements-summary">Conditional Requirements Summary<a class="headerlink" href="#conditional-requirements-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Required Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>operator.webhookCertModel</code> is <code>ca-bundle</code></td>
+<td><code>operator.caBundleBase64Value</code></td>
+</tr>
+<tr>
+<td><code>site.highAvailability</code> is <code>true</code></td>
+<td><code>site.rwxStorageClassName</code></td>
+</tr>
+<tr>
+<td><code>site.sharedStorage</code> is <code>true</code></td>
+<td><code>site.rwxStorageClassName</code></td>
+</tr>
+<tr>
+<td><code>repository.authUsername</code> is provided</td>
+<td><code>repository.authPassword</code></td>
+</tr>
+<tr>
+<td><code>repository.authPassword</code> is provided</td>
+<td><code>repository.authUsername</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="complete-example">Complete Example<a class="headerlink" href="#complete-example" title="Permanent link">&para;</a></h2>
+<p>The following example shows all available fields:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">repository</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">appian</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-container-registry.com/appian/images&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">helm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-container-registry.com/appian/helm&quot;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">authSecretName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;regcred&quot;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">authUsername</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">authPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;REGCRED_PWD_VAR_PLACEHOLDER&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nt">operator</span><span class="p">:</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nt">topology</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cluster-wide&quot;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nt">webhookCertModel</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ca-bundle&quot;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v0.194.0&quot;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;appian-operator&quot;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="nt">caBundleBase64Value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;LS0tLS1CRUdJTi...&quot;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="nt">site</span><span class="p">:</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;appian-site&quot;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;company-proj-dev&quot;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="nt">appianPlatformCsHelmChartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.0.2&quot;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;medium&quot;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="nt">highAvailability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="nt">sharedStorage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">  </span><span class="nt">rwxStorageClassName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my.fileshare.sc&quot;</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">  </span><span class="nt">smtpAuthPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my_smtp_pwd&quot;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">  </span><span class="nt">dataSources</span><span class="p">:</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="nt">dbType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mysql&quot;</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="nt">primarySchemaName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;appian_primary&quot;</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="nt">primaryUsername</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;appian_primary_user&quot;</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="nt">primaryPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;primary_password_here&quot;</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">    </span><span class="nt">businessUsername</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;appian_business_user&quot;</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">    </span><span class="nt">businessPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;business_password_here&quot;</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">    </span><span class="nt">businessSchemaName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;appian&quot;</span>
+</code></pre></div>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
