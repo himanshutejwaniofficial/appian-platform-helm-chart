@@ -1,0 +1,1727 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CLI tools for deploying and managing Appian on Kubernetes">
+      
+      
+      
+      
+        <link rel="prev" href="getting-started.html">
+      
+      
+        <link rel="next" href="configuration.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Usage - Appian on Kubernetes Utilities (v3.0.1)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#usage" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Appian on Kubernetes Utilities (v3.0.1)" class="md-header__button md-logo" aria-label="Appian on Kubernetes Utilities (v3.0.1)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Appian on Kubernetes Utilities (v3.0.1)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Usage
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Appian on Kubernetes Utilities (v3.0.1)" class="md-nav__button md-logo" aria-label="Appian on Kubernetes Utilities (v3.0.1)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Appian on Kubernetes Utilities (v3.0.1)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="usage.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aok-generate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aok generate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="aok generate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimal-config-values-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal Config-Values Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-config-values-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Config-Values Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Directory Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-clean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using --clean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using --debug
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-output-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Output Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Output Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#missing-required-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missing required fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalid-enumeration-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invalid enumeration value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalid-yaml-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invalid YAML syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File not found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditional-validation-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional validation failure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aok-visualize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aok visualize
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="aok visualize">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-input-from-helm-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generating Input from Helm Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-output-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Output Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Output Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graphviz-not-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graphviz not installed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-file-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input file not found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalid-yaml-syntax_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invalid YAML syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-directory-does-not-exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output directory does not exist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aok-migration-convert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aok migration-convert
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="aok migration-convert">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#options_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What It Does
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output File Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-warnings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Warnings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-debug_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using --debug
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aok-generate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aok generate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="aok generate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimal-config-values-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal Config-Values Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-config-values-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Config-Values Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Directory Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-clean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using --clean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using --debug
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-output-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Output Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Output Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#missing-required-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missing required fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalid-enumeration-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invalid enumeration value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalid-yaml-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invalid YAML syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File not found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditional-validation-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional validation failure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aok-visualize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aok visualize
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="aok visualize">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-input-from-helm-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generating Input from Helm Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-output-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Output Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Output Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graphviz-not-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graphviz not installed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-file-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input file not found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalid-yaml-syntax_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invalid YAML syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-directory-does-not-exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output directory does not exist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aok-migration-convert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aok migration-convert
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="aok migration-convert">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#options_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What It Does
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output File Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-warnings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Warnings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-debug_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using --debug
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h1>
+<h2 id="aok-generate"><code>aok generate</code><a class="headerlink" href="#aok-generate" title="Permanent link">&para;</a></h2>
+<p>Generate AoK deployment manifests and a step-by-step deployment guide from a config-values YAML file.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aok<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>&lt;config-values.yaml&gt;<span class="w"> </span>-o<span class="w"> </span>&lt;output-dir&gt;<span class="w"> </span><span class="o">[</span>--clean<span class="o">]</span><span class="w"> </span><span class="o">[</span>--debug<span class="o">]</span>
+</code></pre></div>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Short</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--input</code></td>
+<td><code>-i</code></td>
+<td>Yes</td>
+<td>Path to the config-values YAML file</td>
+</tr>
+<tr>
+<td><code>--output</code></td>
+<td><code>-o</code></td>
+<td>Yes</td>
+<td>Path to the output directory (created if it does not exist)</td>
+</tr>
+<tr>
+<td><code>--clean</code></td>
+<td><code>-c</code></td>
+<td>No</td>
+<td>Remove all existing files in the output directory before generating</td>
+</tr>
+<tr>
+<td><code>--debug</code></td>
+<td><code>-d</code></td>
+<td>No</td>
+<td>Enable verbose diagnostic output (sets log level to DEBUG)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="minimal-config-values-example">Minimal Config-Values Example<a class="headerlink" href="#minimal-config-values-example" title="Permanent link">&para;</a></h3>
+<p>The smallest valid input for a non-HA, cluster-wide deployment using cert-manager:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">repository</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">appian</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-registry.example.com/appian</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">operator</span><span class="p">:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">topology</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-wide</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">webhookCertModel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.194.0</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nt">site</span><span class="p">:</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">appian-site</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-site</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="nt">appianPlatformCsHelmChartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="nt">highAvailability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="nt">rwxStorageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">efs-sc</span>
+</code></pre></div>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>aok<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>config-values.yaml<span class="w"> </span>-o<span class="w"> </span>my-output/
+</code></pre></div>
+<h3 id="full-config-values-example">Full Config-Values Example<a class="headerlink" href="#full-config-values-example" title="Permanent link">&para;</a></h3>
+<p>A complete input covering all optional fields — HA mode, CA bundle webhook model, registry credentials, database configuration, and SMTP:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">repository</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">appian</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-container-registry.com/appian/images&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">helm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-container-registry.com/appian/helm&quot;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">authSecretName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;regcred&quot;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nt">authUsername</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS&quot;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="nt">authPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;REGCRED_PWD_VAR_PLACEHOLDER&quot;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nt">operator</span><span class="p">:</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="nt">topology</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cluster-wide&quot;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="nt">webhookCertModel</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ca-bundle&quot;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="nt">caBundleBase64Value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;LS0tLS1CRUdJTi...&quot;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v0.194.0&quot;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom-operator-ns&quot;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="nt">site</span><span class="p">:</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;appian-site&quot;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;company-proj-prod&quot;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span><span class="nt">appianPlatformCsHelmChartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.0.2&quot;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span><span class="nt">highAvailability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;medium&quot;</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span><span class="nt">rwxStorageClassName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my.fileshare.sc&quot;</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span><span class="nt">sharedStorage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span><span class="nt">smtpAuthPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my_smtp_pwd&quot;</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">  </span><span class="nt">dataSources</span><span class="p">:</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">    </span><span class="nt">dbType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgresql&quot;</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">    </span><span class="nt">primarySchemaName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;appian_primary&quot;</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">    </span><span class="nt">primaryUsername</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;appian_primary_user&quot;</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="nt">primaryPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;primary_password_here&quot;</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">    </span><span class="nt">businessUsername</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;appian_business_user&quot;</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">    </span><span class="nt">businessPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;business_password_here&quot;</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">    </span><span class="nt">businessSchemaName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;appian_business&quot;</span>
+</code></pre></div>
+<h3 id="output-directory-structure">Output Directory Structure<a class="headerlink" href="#output-directory-structure" title="Permanent link">&para;</a></h3>
+<p>After running the generator, the output directory contains:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>my-output/
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── DEPLOYMENT.md                          # Step-by-step deployment guide
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>├── manifests/
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>│   ├── operator-values.yaml              # Operator Helm values
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>│   ├── site-operator-values.yaml         # (main-and-site topology only)
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>│   ├── cert-manager-selfsigned-cluster-issuer.yaml   # (cert-manager only)
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>│   ├── cert-manager-appian-op-webhooks-cert-secret.yaml  # (cert-manager only)
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>│   ├── appian-shared-logs-pvc.yaml       # Shared logs PVC
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>│   ├── appian-shared-data-pvc.yaml       # (shared storage only)
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>│   ├── appian-dbs-&lt;dbType&gt;.sql           # Database provisioning script
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>│   ├── passwords.properties              # SMTP credentials
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>│   └── appian-platform-cs-values.yaml    # Draft Helm values for site chart
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>└── dependencies/                          # Reserved for future use
+</code></pre></div>
+<p>Files are generated conditionally based on your configuration:</p>
+<ul>
+<li><code>site-operator-values.yaml</code> — only when <code>operator.topology</code> is <code>main-and-site</code></li>
+<li><code>cert-manager-*.yaml</code> — only when <code>operator.webhookCertModel</code> is <code>cert-manager</code></li>
+<li><code>appian-shared-data-pvc.yaml</code> — only when <code>site.sharedStorage</code> is <code>true</code></li>
+</ul>
+<h3 id="using-clean">Using <code>--clean</code><a class="headerlink" href="#using-clean" title="Permanent link">&para;</a></h3>
+<p>The <code>--clean</code> flag removes all existing files in the output directory before generating new ones. This is useful when you change your configuration and want to ensure no stale files remain from a previous run.</p>
+<p>Without <code>--clean</code>, existing files that match generated filenames are overwritten, but other files are left untouched.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># First run — generates output</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>aok<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>config-values.yaml<span class="w"> </span>-o<span class="w"> </span>output/
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Configuration changed (e.g. switched from cert-manager to ca-bundle)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Use --clean to remove stale cert-manager manifests</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>aok<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>config-values.yaml<span class="w"> </span>-o<span class="w"> </span>output/<span class="w"> </span>--clean
+</code></pre></div>
+<h3 id="using-debug">Using <code>--debug</code><a class="headerlink" href="#using-debug" title="Permanent link">&para;</a></h3>
+<p>The <code>--debug</code> flag enables verbose logging to stderr, showing each step of the generation pipeline. Useful for troubleshooting template rendering or validation issues.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>aok<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>config-values.yaml<span class="w"> </span>-o<span class="w"> </span>output/<span class="w"> </span>--debug
+</code></pre></div>
+<p>Example debug output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>DEBUG    aok_utilities.generator.core: Loading config from config-values.yaml
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>DEBUG    aok_utilities.generator.config: Validating schema...
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>DEBUG    aok_utilities.generator.config: Resolving defaults: dbType=mysql, namespace=appian-operator
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>DEBUG    aok_utilities.generator.storage: Loading storage values for class=small
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>DEBUG    aok_utilities.generator.template_selector: Selected 7 templates for rendering
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>DEBUG    aok_utilities.generator.renderer: Rendering operator-values.yaml.j2 → manifests/operator-values.yaml
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>DEBUG    aok_utilities.generator.renderer: Rendering DEPLOYMENT.md.j2 → DEPLOYMENT.md
+</code></pre></div>
+<h3 id="error-output-examples">Error Output Examples<a class="headerlink" href="#error-output-examples" title="Permanent link">&para;</a></h3>
+<h4 id="missing-required-fields">Missing required fields<a class="headerlink" href="#missing-required-fields" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>aok<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>incomplete.yaml<span class="w"> </span>-o<span class="w"> </span>output/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ERROR    Configuration validation failed:
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ERROR      • operator.topology: required field is missing
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>ERROR      • site.namespace: required field is missing
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>ERROR      • site.class: required field is missing
+</code></pre></div>
+<p>Exit code: <code>1</code></p>
+<h4 id="invalid-enumeration-value">Invalid enumeration value<a class="headerlink" href="#invalid-enumeration-value" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>aok<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>bad-topology.yaml<span class="w"> </span>-o<span class="w"> </span>output/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ERROR    Configuration validation failed:
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>ERROR      • operator.topology: invalid value &#39;single-node&#39;; valid options are: cluster-wide, main-and-site
+</code></pre></div>
+<p>Exit code: <code>1</code></p>
+<h4 id="invalid-yaml-syntax">Invalid YAML syntax<a class="headerlink" href="#invalid-yaml-syntax" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span>aok<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>malformed.yaml<span class="w"> </span>-o<span class="w"> </span>output/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ERROR    Cannot read config file: malformed.yaml: YAML syntax error at line 12: mapping values are not allowed here
+</code></pre></div>
+<p>Exit code: <code>1</code></p>
+<h4 id="file-not-found">File not found<a class="headerlink" href="#file-not-found" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$<span class="w"> </span>aok<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>nonexistent.yaml<span class="w"> </span>-o<span class="w"> </span>output/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ERROR    Cannot read config file: nonexistent.yaml: file not found
+</code></pre></div>
+<p>Exit code: <code>1</code></p>
+<h4 id="conditional-validation-failure">Conditional validation failure<a class="headerlink" href="#conditional-validation-failure" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$<span class="w"> </span>aok<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>missing-ca-bundle.yaml<span class="w"> </span>-o<span class="w"> </span>output/
+</code></pre></div>
+<p>Where <code>missing-ca-bundle.yaml</code> has <code>operator.webhookCertModel: ca-bundle</code> but no <code>caBundleBase64Value</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ERROR    Configuration validation failed:
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>ERROR      • operator.caBundleBase64Value: required because operator.webhookCertModel is &#39;ca-bundle&#39;
+</code></pre></div>
+<p>Exit code: <code>1</code></p>
+<hr />
+<h2 id="aok-visualize"><code>aok visualize</code><a class="headerlink" href="#aok-visualize" title="Permanent link">&para;</a></h2>
+<p>Read an Appian site YAML (the Kubernetes Custom Resource for an Appian site) and generate a PNG architecture diagram showing pods, PVCs, services, ingress, databases, and SMTP connectivity. A text-based resource summary table is also printed to stdout.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>aok<span class="w"> </span>visualize<span class="w"> </span>-i<span class="w"> </span>&lt;site.yaml&gt;<span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>&lt;output-path&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--debug<span class="o">]</span>
+</code></pre></div>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
+<p>The <code>diagrams</code> Python library renders diagrams via <a href="https://graphviz.org/">Graphviz</a>. You must install Graphviz before running <code>aok visualize</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS</td>
+<td><code>brew install graphviz</code></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td><code>choco install graphviz</code> or <code>winget install graphviz</code></td>
+</tr>
+<tr>
+<td>Debian/Ubuntu</td>
+<td><code>sudo apt install graphviz</code></td>
+</tr>
+</tbody>
+</table>
+<p>If Graphviz is not installed, the command exits with a clear error message and installation instructions.</p>
+<h3 id="options_1">Options<a class="headerlink" href="#options_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Short</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--input</code></td>
+<td><code>-i</code></td>
+<td>Yes</td>
+<td>Path to the Appian site YAML file (Custom Resource)</td>
+</tr>
+<tr>
+<td><code>--output</code></td>
+<td><code>-o</code></td>
+<td>No</td>
+<td>Output path for the generated PNG (default: <code>./appian_site_visualisation</code>)</td>
+</tr>
+<tr>
+<td><code>--debug</code></td>
+<td><code>-d</code></td>
+<td>No</td>
+<td>Enable verbose diagnostic output (sets log level to DEBUG)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> The <code>diagrams</code> library automatically appends <code>.png</code> to the output path. If you specify <code>--output my-diagram</code>, the generated file will be <code>my-diagram.png</code>.</p>
+</blockquote>
+<h3 id="example-commands">Example Commands<a class="headerlink" href="#example-commands" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Basic usage — generates ./appian_site_visualisation.png</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>aok<span class="w"> </span>visualize<span class="w"> </span>-i<span class="w"> </span>my-site.yaml
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># Custom output path — generates ./docs/architecture.png</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>aok<span class="w"> </span>visualize<span class="w"> </span>-i<span class="w"> </span>my-site.yaml<span class="w"> </span>-o<span class="w"> </span>./docs/architecture
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># With debug logging</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>aok<span class="w"> </span>visualize<span class="w"> </span>-i<span class="w"> </span>my-site.yaml<span class="w"> </span>-o<span class="w"> </span>./docs/architecture<span class="w"> </span>--debug
+</code></pre></div>
+<h3 id="generating-input-from-helm-values">Generating Input from Helm Values<a class="headerlink" href="#generating-input-from-helm-values" title="Permanent link">&para;</a></h3>
+<p>If you deploy your Appian site using the <code>appian-platform-cs</code> Helm chart, you can generate the input YAML with <code>helm template</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>helm<span class="w"> </span>template<span class="w"> </span>my-site<span class="w"> </span>appian-platform-cs/<span class="w"> </span>-f<span class="w"> </span>my-values.yaml<span class="w"> </span>&gt;<span class="w"> </span>rendered-site.yaml
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>aok<span class="w"> </span>visualize<span class="w"> </span>-i<span class="w"> </span>rendered-site.yaml<span class="w"> </span>-o<span class="w"> </span>my-site-diagram
+</code></pre></div>
+<p>This renders the Custom Resource manifest from your Helm values without applying it to a cluster.</p>
+<h3 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
+<p>The command produces two outputs:</p>
+<ol>
+<li><strong>PNG diagram</strong> — An architecture diagram saved to the output path (with <code>.png</code> extension). The diagram shows:</li>
+<li>All AoK component pods (zookeeper, kafka, searchServer, dataServer, serviceManager, webapp, httpd) with per-pod resource allocations</li>
+<li>PVC nodes for each component's storage</li>
+<li>Shared storage (health check logs, HA data)</li>
+<li>Service Manager engine breakdown per replica with per-engine resources</li>
+<li>K8s Service and ingress configuration (with platform-specific icons for ALB, Azure App Gateway, Nginx)</li>
+<li>Database nodes with type-specific icons connected via JDBC</li>
+<li>SMTP server connectivity</li>
+<li>
+<p>A Users node showing site URLs</p>
+</li>
+<li>
+<p><strong>Resource summary table</strong> (printed to stdout) — A tabular breakdown of CPU, memory, and storage allocations per component plus site-wide totals.</p>
+</li>
+</ol>
+<h3 id="error-output-examples_1">Error Output Examples<a class="headerlink" href="#error-output-examples_1" title="Permanent link">&para;</a></h3>
+<h4 id="graphviz-not-installed">Graphviz not installed<a class="headerlink" href="#graphviz-not-installed" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>$<span class="w"> </span>aok<span class="w"> </span>visualize<span class="w"> </span>-i<span class="w"> </span>my-site.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ERROR    Graphviz is required for diagram generation.
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>         Install Graphviz to generate diagrams:
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>           macOS:         brew install graphviz
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>           Windows:       choco install graphviz  (or)  winget install graphviz
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>           Debian/Ubuntu: sudo apt install graphviz
+</code></pre></div>
+<p>Exit code: <code>1</code></p>
+<h4 id="input-file-not-found">Input file not found<a class="headerlink" href="#input-file-not-found" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>$<span class="w"> </span>aok<span class="w"> </span>visualize<span class="w"> </span>-i<span class="w"> </span>nonexistent.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>ERROR    Cannot read config file: nonexistent.yaml: file not found
+</code></pre></div>
+<p>Exit code: <code>1</code></p>
+<h4 id="invalid-yaml-syntax_1">Invalid YAML syntax<a class="headerlink" href="#invalid-yaml-syntax_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>$<span class="w"> </span>aok<span class="w"> </span>visualize<span class="w"> </span>-i<span class="w"> </span>malformed.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>ERROR    Cannot read config file: malformed.yaml: YAML syntax error
+</code></pre></div>
+<p>Exit code: <code>1</code></p>
+<h4 id="output-directory-does-not-exist">Output directory does not exist<a class="headerlink" href="#output-directory-does-not-exist" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>$<span class="w"> </span>aok<span class="w"> </span>visualize<span class="w"> </span>-i<span class="w"> </span>my-site.yaml<span class="w"> </span>-o<span class="w"> </span>/nonexistent/path/diagram
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>ERROR    Output directory not found: /nonexistent/path
+</code></pre></div>
+<p>Exit code: <code>1</code></p>
+<hr />
+<h2 id="aok-migration-convert"><code>aok migration-convert</code><a class="headerlink" href="#aok-migration-convert" title="Permanent link">&para;</a></h2>
+<p>Convert a Migration Tool draft site YAML into a Helm values file for the <code>appian-platform-cs</code> chart. The converter parses the input, validates it for non-standard or deprecated configurations, and emits a clean values file with inline comments and action annotations.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>aok<span class="w"> </span>migration-convert<span class="w"> </span>-i<span class="w"> </span>&lt;draft-site.yaml&gt;<span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>&lt;output-values.yaml&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--debug<span class="o">]</span>
+</code></pre></div>
+<h3 id="options_2">Options<a class="headerlink" href="#options_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Short</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--input</code></td>
+<td><code>-i</code></td>
+<td>Yes</td>
+<td>Path to the Migration Tool draft site YAML file</td>
+</tr>
+<tr>
+<td><code>--output</code></td>
+<td><code>-o</code></td>
+<td>No</td>
+<td>Output Helm values file path (default: <code>appian-platform-cs-values.yaml</code>)</td>
+</tr>
+<tr>
+<td><code>--debug</code></td>
+<td></td>
+<td>No</td>
+<td>Enable verbose diagnostic output (sets log level to DEBUG)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-it-does">What It Does<a class="headerlink" href="#what-it-does" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Parses</strong> the Migration Tool draft site YAML (apiVersion <code>crd.k8s.appian.com/v1beta1</code>, kind <code>Appian</code>)</li>
+<li><strong>Extracts</strong> site URL, version, HA mode, component replicas, engine overrides, data sources, and custom properties</li>
+<li><strong>Partitions</strong> custom properties into enforced properties (mapped to dedicated Helm keys), SMTP configuration, and additional custom properties</li>
+<li><strong>Validates</strong> the configuration, emitting warnings for non-standard replica counts, deprecated properties, unsupported JDBC drivers, etc.</li>
+<li><strong>Emits</strong> a complete Helm values YAML with inline comments indicating what the user needs to update, what must not be changed, and what was detected as non-standard</li>
+</ol>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>aok<span class="w"> </span>migration-convert<span class="w"> </span>-i<span class="w"> </span>migration-draft-site.yaml<span class="w"> </span>-o<span class="w"> </span>my-site-values.yaml
+</code></pre></div>
+<p>Output on success:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>  • conf.search-server.user.appian.password is now managed by the Operator from v0.181.0 and has been removed from the output.
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>  • Data source factories must be changed to org.apache.tomcat.jdbc.pool.DataSourceFactory with passwords provided via passwordSecretKeyRef.
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>Wrote my-site-values.yaml (2 warnings)
+</code></pre></div>
+<h3 id="output-file-structure">Output File Structure<a class="headerlink" href="#output-file-structure" title="Permanent link">&para;</a></h3>
+<p>The generated values file includes these sections in order:</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header comment</td>
+<td>Generator version, chart reference</td>
+</tr>
+<tr>
+<td>Warnings block</td>
+<td>Bullet-pointed validation warnings (if any)</td>
+</tr>
+<tr>
+<td><code>siteName</code></td>
+<td>Empty placeholder — user must provide</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Extracted from input — DO NOT CHANGE</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>Site URL from input</td>
+</tr>
+<tr>
+<td><code>staticUrl</code> / <code>dynamicUrl</code></td>
+<td>If present in input</td>
+</tr>
+<tr>
+<td><code>class</code></td>
+<td>Empty placeholder — user selects sizing class</td>
+</tr>
+<tr>
+<td><code>highAvailability</code></td>
+<td>Derived from zookeeper replicas — DO NOT CHANGE</td>
+</tr>
+<tr>
+<td><code>cascadeVersionToComponentTags</code></td>
+<td>Always <code>true</code> — DO NOT CHANGE</td>
+</tr>
+<tr>
+<td><code>passwordsPropertiesSecretName</code></td>
+<td>Only if SMTP auth is enabled</td>
+</tr>
+<tr>
+<td><code>metricsAuthToken</code></td>
+<td>If present in custom properties</td>
+</tr>
+<tr>
+<td><code>smtp</code></td>
+<td>SMTP configuration (if SMTP properties were present)</td>
+</tr>
+<tr>
+<td><code>additionalCustomProperties</code></td>
+<td>All non-enforced, non-SMTP, non-removed properties</td>
+</tr>
+<tr>
+<td><code>license</code></td>
+<td>Default license secret/configmap names</td>
+</tr>
+<tr>
+<td><code>storage</code></td>
+<td>Storage class and PVC placeholders</td>
+</tr>
+<tr>
+<td><code>images</code></td>
+<td>Image repository placeholders</td>
+</tr>
+<tr>
+<td>Component overrides</td>
+<td>Only for components with non-default values</td>
+</tr>
+<tr>
+<td><code>ingressTemplate</code></td>
+<td>Ingress configuration placeholder</td>
+</tr>
+</tbody>
+</table>
+<h3 id="validation-warnings">Validation Warnings<a class="headerlink" href="#validation-warnings" title="Permanent link">&para;</a></h3>
+<p>The converter checks for and warns about:</p>
+<ul>
+<li>Analytics shard count exceeding 3</li>
+<li><code>MAX_EXEC_ENGINE_LOAD_METRIC</code> exceeding 2145</li>
+<li>Deprecated/removed properties (search-server password, RTS circuit breaker)</li>
+<li>Component replica counts deviating from HA/non-HA defaults</li>
+<li>Non-standard webapp, serviceManager, or engine override replica counts</li>
+<li>Non-suite <code>applicationContext</code></li>
+<li>JDBC drivers not shipped with the platform (mysql, mysql:aws, db2)</li>
+<li>Data source factory requiring migration to Tomcat pool</li>
+</ul>
+<h3 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Input file not found</td>
+<td>Prints error to stderr, exits with code 1</td>
+</tr>
+<tr>
+<td>Input file not readable</td>
+<td>Prints error to stderr, exits with code 1</td>
+</tr>
+<tr>
+<td>Invalid YAML syntax</td>
+<td>Prints error to stderr, exits with code 1</td>
+</tr>
+<tr>
+<td>Malformed version string</td>
+<td>Prints error to stderr, exits with code 1</td>
+</tr>
+<tr>
+<td>Output path not writable</td>
+<td>Prints error to stderr, exits with code 1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="using-debug_1">Using <code>--debug</code><a class="headerlink" href="#using-debug_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>aok<span class="w"> </span>migration-convert<span class="w"> </span>-i<span class="w"> </span>draft-site.yaml<span class="w"> </span>--debug
+</code></pre></div>
+<p>Enables DEBUG-level logging showing each step of the parse → validate → emit pipeline.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
